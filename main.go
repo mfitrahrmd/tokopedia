@@ -23,5 +23,11 @@ func main() {
 		})
 	})
 
+	app.GET("/echo/{message}", func(ctx *gin.Context) {
+		ctx.JSON(200, map[string]any{
+			"message": ctx.Param("message"),
+		})
+	})
+
 	app.Run(fmt.Sprintf(":%s", os.Getenv("APP_PORT")))
 }

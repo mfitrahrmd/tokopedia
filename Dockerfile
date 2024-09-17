@@ -8,6 +8,8 @@ WORKDIR /app
 
 COPY . .
 
+COPY .env .
+
 RUN go get -d -v ./...
 
 RUN go build -o app .
@@ -22,4 +24,4 @@ COPY --from=builder /app/.env .
 
 EXPOSE 3000
 
-ENTRYPOINT ["./app"]
+CMD ["./app"]

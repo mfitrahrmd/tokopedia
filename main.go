@@ -10,11 +10,17 @@ import (
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalln(err)
+	if os.Getenv("ENV") == "" {
+		os.Setenv("ENV", "dev")
 	}
-
+	ENV := os.Getenv("ENV")
+	if ENV == "dev" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatalln(err)
+		}
+	}
+	
 	app := gin.Default()
 
 	app.GET("", func(ctx *gin.Context) {

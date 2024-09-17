@@ -29,7 +29,7 @@ func main() {
 		})
 	})
 
-	app.GET("/echo/{message}", func(ctx *gin.Context) {
+	app.GET("/echo/:message", func(ctx *gin.Context) {
 		ctx.JSON(200, map[string]any{
 			"message": ctx.Param("message"),
 		})
